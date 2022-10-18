@@ -18,7 +18,7 @@ public class ConcatenationConnectorFunction implements OutboundConnectorFunction
   public Object execute(OutboundConnectorContext context) throws Exception {
     var connectorRequest = context.getVariablesAsType(ConcatenationConnectorRequest.class);
 
-    context.validate(connectorRequest);
+    
     //context.replaceSecrets(connectorRequest);
 
     return executeConnector(connectorRequest);

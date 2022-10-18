@@ -26,4 +26,7 @@ public class ConcatenationConnectorFunctionTest {
       .extracting("concatenationResult")
       .isEqualTo("Result of concatenation: my_input1_value my_input2_value");
   }
+  /*
+   * {"input1":"hello","input2":"world"}
+   */
 }
