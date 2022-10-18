@@ -5,18 +5,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import io.camunda.connector.test.outbound.OutboundConnectorContextBuilder;
 import org.junit.jupiter.api.Test;
 
-public class MyFunctionTest {
+public class ConcatenationConnectorFunctionTest {
 
   @Test
   void shouldReturnReceivedMessageWhenExecute() throws Exception {
     // given
-    var input = new MyConnectorRequest();
-    var auth = new Authentication();
-    input.setMessage("Hello World!");
-    input.setAuthentication(auth);
-    auth.setToken("xobx-test");
-    auth.setUser("testuser");
-    var function = new MyConnectorFunction();
+    var input = new ConcatenationConnectorRequest();
+
+    input.setInput1("my_input1_value");
+    input.setInput2("my_input2_value");
+    var function = new ConcatenationConnectorFunction();
     var context = OutboundConnectorContextBuilder.create()
       .variables(input)
       .build();
@@ -24,8 +22,8 @@ public class MyFunctionTest {
     var result = function.execute(context);
     // then
     assertThat(result)
-      .isInstanceOf(MyConnectorResult.class)
-      .extracting("myProperty")
-      .isEqualTo("Message received: Hello World!");
+      .isInstanceOf(ConcatenationConnectorResult.class)
+      .extracting("concatenationResult")
+      .isEqualTo("Result of concatenation: my_input1_value my_input2_value");
   }
 }
