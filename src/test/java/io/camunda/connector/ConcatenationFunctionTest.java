@@ -5,10 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import io.camunda.connector.test.outbound.OutboundConnectorContextBuilder;
 import org.junit.jupiter.api.Test;
 
-public class ConcatenationConnectorFunctionTest {
+public class ConcatenationFunctionTest {
 
   @Test
-  void shouldReturnReceivedMessageWhenExecute() throws Exception {
+  void shouldReturnExpectedResultWhenExecute() throws Exception {
     // given
     var input = new ConcatenationConnectorRequest();
 
@@ -26,7 +26,5 @@ public class ConcatenationConnectorFunctionTest {
       .extracting("concatenationResult")
       .isEqualTo("Result of concatenation: my_input1_value my_input2_value");
   }
-  /*
-   * {"input1":"hello","input2":"world"}
-   */
+
 }
